@@ -20,7 +20,7 @@ todoRouter.post("/new", async(req, res) => {
     try{
         const result = await query('insert into task (description) values ($1) returning *',
         [req.body.description]);
-        res.status(200).json({id:result.row[0].id});
+        res.status(200).json({id:result.rows[0].id});
     }catch(error){
         console.log(error);
         res.statusMessage = error;
